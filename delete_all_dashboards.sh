@@ -1,6 +1,9 @@
 #!/bin/sh
 
-#set -x
+if [ "${DEBUG}" ]; then
+    set -x
+fi
+
 # export KEY=
 # export GRAFANA_BASE_URL='http://localhost:3000'
 

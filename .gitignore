@@ -1,0 +1,9 @@
+*~
+.#*
+*.bak
+./build/
+build
+*.log
+dashboards*
+
+
