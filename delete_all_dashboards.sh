@@ -4,13 +4,13 @@ if [ "${DEBUG}" ]; then
     set -x
 fi
 
-# export KEY=
+# export GRAFANA_KEY=
 # export GRAFANA_BASE_URL='http://localhost:3000'
 
 
 get() {
     curl -q -s --insecure \
-         -H "Authorization: Bearer ${KEY}" \
+         -H "Authorization: Bearer ${GRAFANA_KEY}" \
          -H "Content-Type: application/json" \
          -H "Accept: application/json" \
          --url "$@"
@@ -18,7 +18,7 @@ get() {
 
 delete() {
     curl -q -s --insecure -X DELETE \
-         -H "Authorization: Bearer $KEY"\
+         -H "Authorization: Bearer $GRAFANA_KEY"\
          -H "Content-Type: application/json"\
          -H "Accept: application/json"\
          --url "$@"
