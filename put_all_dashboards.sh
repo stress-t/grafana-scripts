@@ -58,7 +58,7 @@ do {
 for f in `ls -1 ${DASHBOARDS_DIR}/*.json`
 do {
     if [ ! -z "`cat $f | grep 'isFolder'| grep false`" ]; then
-        UUID=`cat $f |jq '.folderUrl' -r |sed -e 's/.*\/dashboards\/f\///g' -e 's/\/.*//g'`
+        UUID=`cat $f |jq '.meta.folderUrl' -r |sed -e 's/.*\/dashboards\/f\///g' -e 's/\/.*//g'`
         TITLE=`cat $f |jq '.dashboard.title' -r`
         if [ -f "UUID_${UUID}_ID"  ]; then
             F_ID=`cat UUID_${UUID}_ID`
