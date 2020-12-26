@@ -26,8 +26,8 @@ delete() {
 
 for f in `get "http://localhost:3000/api/search/?query=" | jq -r '.[] | "\(.uid);\(.url)"'`
 do {
-    UID=$(echo $f| cut -d ';' -f1)
+    UUID=$(echo $f| cut -d ';' -f1)
     URI=$(echo $f| cut -d ';' -f2)
     NAME=$(basename $URI)
-    delete http://localhost:3000/api/dashboards/uid/$UID | jq
+    delete http://localhost:3000/api/dashboards/uid/$UUID | jq
 } done

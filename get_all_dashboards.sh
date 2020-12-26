@@ -21,11 +21,10 @@ if [ ! -d ${DASHBOARDS_DIR} ]; then
     mkdir ${DASHBOARDS_DIR}
 fi
 
-
 for f in `get "${GRAFANA_BASE_URL}/api/search/?query=" | jq -r '.[] | "\(.uid);\(.url)"'`
 do {
-    UID=$(echo $f| cut -d ';' -f1)
+    UUID=$(echo $f| cut -d ';' -f1)
     URI=$(echo $f| cut -d ';' -f2)
     NAME=$(basename $URI)
-    get "${GRAFANA_BASE_URL}/api/dashboards/uid/$UID" | jq '.| del(.dashboard.id)' > ${DASHBOARDS_DIR}/${UID}.json
+    get "${GRAFANA_BASE_URL}/api/dashboards/uid/$UUID" | jq '.| del(.dashboard.id)' > ${DASHBOARDS_DIR}/${UUID}.json
 } done
