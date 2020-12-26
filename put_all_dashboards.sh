@@ -73,5 +73,5 @@ do {
 } done
 
 
-rm -f UUID_*
+#rm -f UUID_*
 rm -f ${DASHBOARDS_DIR}/*.new
