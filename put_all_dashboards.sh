@@ -63,11 +63,11 @@ do {
         if [ -f "UUID_${UUID}_ID"  ]; then
             F_ID=`cat UUID_${UUID}_ID`
             cat $f | jq ".folderId = $F_ID" | jq '.overwrite = true' > ${f}.new
-            post ${GRAFANA_BASE_URL}/api/dashboards/db "@${f}.new"  | jq
+            post ${GRAFANA_BASE_URL}/api/dashboards/db "@${f}.new"
             rm -f ${f}.new
         else
             cat $f | jq '. +={"overwrite": true }' > ${f}.new
-            post ${GRAFANA_BASE_URL}/api/dashboards/db "@${f}.new" | jq
+            post ${GRAFANA_BASE_URL}/api/dashboards/db "@${f}.new"
         fi
     fi
 } done
